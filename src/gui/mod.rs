@@ -4,18 +4,18 @@ pub mod vector_input;
 use eframe::{App, Frame};
 use eframe::egui::{CentralPanel, Context, SidePanel, TopBottomPanel};
 use crate::constants::GUI_SIDEBAR_WIDTH;
-use crate::gui::vector_input::{vector_input, VectorInput};
+use crate::gui::vector_input::{vector_input, VectorInputData};
 
 
 
 pub struct Gui {
-    vrp: VectorInput,
+    vrp: VectorInputData,
 }
 
 impl Default for Gui {
     fn default() -> Self {
         Self {
-            vrp: VectorInput::default(),
+            vrp: VectorInputData::default(),
         }
     }
 }

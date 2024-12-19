@@ -1,18 +1,18 @@
-pub fn parse_input(prefix: &str, value: &mut f32, input: &mut String) {
-    if input.starts_with(prefix) {
-        if let Some(num_str) = input.strip_prefix(prefix) {
+pub fn parse_input(prefix: &str, value: &mut f32, string: &mut String) {
+    if string.starts_with(prefix) {
+        if let Some(num_str) = string.strip_prefix(prefix) {
             if let Ok(parsed_value) = num_str.trim().parse::<f32>() {
                 *value = parsed_value;
-                *input = format!("{prefix} {parsed_value}");
+                *string = format!("{prefix} {parsed_value}");
                 return;
             }
         }
     } else {
-        if let Ok(parsed_value) = input.trim().parse::<f32>() {
+        if let Ok(parsed_value) = string.trim().parse::<f32>() {
             *value = parsed_value;
-            *input = format!("{prefix} {parsed_value}");
+            *string = format!("{prefix} {parsed_value}");
             return;
         }
     }
-    *input = format!("Inválido!");
+    *string = format!("Inválido!");
 }

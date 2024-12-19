@@ -2,7 +2,7 @@ use eframe::egui::{TextEdit, Ui};
 use crate::constants::GUI_VECTOR_INPUT_WIDTH;
 use crate::gui::parse_input::parse_input;
 
-pub struct VectorInput {
+pub struct VectorInputData {
     pub xv: f32,
     pub yv: f32,
     pub zv: f32,
@@ -11,7 +11,7 @@ pub struct VectorInput {
     pub zs: String,
 }
 
-impl Default for VectorInput {
+impl Default for VectorInputData {
     fn default() -> Self {
         Self {
             xv: 0.0,
@@ -27,21 +27,21 @@ impl Default for VectorInput {
 pub fn vector_input(
     ui: &mut Ui,
     label: &str,
-    input: &mut VectorInput,
+    data: &mut VectorInputData,
 ) {
     ui.collapsing(label, |ui| {
         ui.horizontal(|ui| {
-            ui.add(TextEdit::singleline(&mut input.xs)
+            ui.add(TextEdit::singleline(&mut data.xs)
                 .desired_width(GUI_VECTOR_INPUT_WIDTH));
-            ui.add(TextEdit::singleline(&mut input.ys)
+            ui.add(TextEdit::singleline(&mut data.ys)
                 .desired_width(GUI_VECTOR_INPUT_WIDTH));
-            ui.add(TextEdit::singleline(&mut input.zs)
+            ui.add(TextEdit::singleline(&mut data.zs)
                 .desired_width(GUI_VECTOR_INPUT_WIDTH));
 
             if ui.button("Aplicar").clicked() {
-                parse_input("X:", &mut input.xv, &mut input.xs);
-                parse_input("Y:", &mut input.yv, &mut input.ys);
-                parse_input("Z:", &mut input.zv, &mut input.zs);
+                parse_input("X:", &mut data.xv, &mut data.xs);
+                parse_input("Y:", &mut data.yv, &mut data.ys);
+                parse_input("Z:", &mut data.zv, &mut data.zs);
             }
         });
     });
