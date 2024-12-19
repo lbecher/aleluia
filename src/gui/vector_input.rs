@@ -24,6 +24,19 @@ impl Default for VectorInputData {
     }
 }
 
+impl VectorInputData {
+    pub fn new(xv: f32, yv: f32, zv: f32) -> Self {
+        Self {
+            xv,
+            yv,
+            zv,
+            xs: format!("X: {}", xv),
+            ys: format!("Y: {}", yv),
+            zs: format!("Z: {}", zv),
+        }
+    }
+}
+
 pub fn vector_input(
     ui: &mut Ui,
     label: &str,

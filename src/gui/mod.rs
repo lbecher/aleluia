@@ -10,12 +10,16 @@ use crate::gui::vector_input::{vector_input, VectorInputData};
 
 pub struct Gui {
     vrp: VectorInputData,
+    p: VectorInputData,
+    y: VectorInputData,
 }
 
 impl Default for Gui {
     fn default() -> Self {
         Self {
-            vrp: VectorInputData::default(),
+            vrp: VectorInputData::new(0.0, 0.0, 0.0),
+            p: VectorInputData::default(),
+            y: VectorInputData::new(0.0, 1.0, 0.0),
         }
     }
 }
@@ -49,11 +53,11 @@ impl Gui {
     pub fn side_panel_content(&mut self, ui: &mut eframe::egui::Ui) {
         ui.label("Side panel");
 
-        vector_input(
-            ui,
-            "VRP",
-            &mut self.vrp,
-        );
+        ui.collapsing("Câmera", |ui| {
+            vector_input(ui, "VRP", &mut self.vrp);
+            vector_input(ui, "P", &mut self.p);
+            vector_input(ui, "Y", &mut self.y);
+        });
     }
 
     pub fn central_panel_content(&mut self, ui: &mut eframe::egui::Ui) {
