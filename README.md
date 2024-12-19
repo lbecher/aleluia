@@ -1,0 +1,7 @@
+# Aleluia
+
+Execução:
+
+```
+cargo run
+```
