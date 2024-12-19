@@ -4,26 +4,18 @@ pub mod vector_input;
 use eframe::{App, Frame};
 use eframe::egui::{CentralPanel, Context, SidePanel, TopBottomPanel};
 use crate::constants::GUI_SIDEBAR_WIDTH;
-use crate::gui::vector_input::vector_input;
+use crate::gui::vector_input::{vector_input, VectorInput};
+
+
 
 pub struct Gui {
-    vrp_x: f32,
-    vrp_y: f32,
-    vrp_z: f32,
-    vrp_xs: String,
-    vrp_ys: String,
-    vrp_zs: String,
+    vrp: VectorInput,
 }
 
 impl Default for Gui {
     fn default() -> Self {
         Self {
-            vrp_x: 0.0,
-            vrp_y: 0.0,
-            vrp_z: 0.0,
-            vrp_xs: "X: 0".to_string(),
-            vrp_ys: "Y: 0".to_string(),
-            vrp_zs: "Z: 0".to_string(),
+            vrp: VectorInput::default(),
         }
     }
 }
@@ -60,12 +52,7 @@ impl Gui {
         vector_input(
             ui,
             "VRP",
-            &mut self.vrp_xs,
-            &mut self.vrp_ys,
-            &mut self.vrp_zs,
-            &mut self.vrp_x,
-            &mut self.vrp_y,
-            &mut self.vrp_z,
+            &mut self.vrp,
         );
     }
 
