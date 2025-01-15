@@ -1,6 +1,6 @@
 use eframe::egui::{TextEdit, Ui};
 use crate::constants::GUI_VECTOR_INPUT_WIDTH;
-use crate::gui::parse_input::parse_input;
+use crate::app::parse_input::parse_input;
 
 pub struct VectorInputData {
     pub xv: f32,
@@ -37,11 +37,7 @@ impl VectorInputData {
     }
 }
 
-pub fn vector_input(
-    ui: &mut Ui,
-    label: &str,
-    data: &mut VectorInputData,
-) {
+pub fn vector_input(ui: &mut Ui, label: &str, data: &mut VectorInputData) {
     ui.collapsing(label, |ui| {
         ui.horizontal(|ui| {
             ui.add(TextEdit::singleline(&mut data.xs)
@@ -59,4 +55,3 @@ pub fn vector_input(
         });
     });
 }
-
